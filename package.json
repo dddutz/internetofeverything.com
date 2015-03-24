@@ -1,0 +1,20 @@
+{
+  "name": "derindutz",
+  "version": "1.0.0",
+  "description": "Derin Dutz's personal website.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.12.3",
+    "jade": "*",
+    "stylus": "*",
+    "nib": "*"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "author": "Derin Dutz",
+  "license": "ISC"
+}
