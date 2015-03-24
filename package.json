@@ -1,5 +1,6 @@
 {
   "name": "derindutz",
+  "author": "Derin Dutz",
   "version": "1.0.0",
   "description": "Derin Dutz's personal website.",
   "main": "app.js",
@@ -15,6 +16,9 @@
   "engines": {
     "node": "0.10.x"
   },
-  "author": "Derin Dutz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dddutz/internetofeverything.com"
+  },
   "license": "ISC"
 }
