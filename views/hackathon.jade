@@ -1,0 +1,22 @@
+extend layout
+block content
+  .registration
+    #register-button.collapsable-button click to register
+      form(id="register-form" class="hidden")
+        #form-name.entry name:
+          input(type="text")
+        #form-email.entry email:
+          input(type="text")
+        #form-team
+        button(id="add-team-member") add team member
+        #form-submit
+          input(type="submit" value="submit")
+
+block scripts
+  script(type="text/javascript" src="/javascripts/handlebars-v3.0.0.js")
+  script(type="text/javascript" src="/javascripts/hackathon.js")
+    
+  script(id="new-team-member-template" type="text/x-handlebars-template")
+    .entry team member email:
+      input(type="text")
+      button(id="remove-team-member") remove

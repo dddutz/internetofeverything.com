@@ -6,7 +6,7 @@
 /*
  * Grab a custom font from Google
  */
-@import url('http://fonts.googleapis.com/css?family=Quicksand')
+// @import url('http://fonts.googleapis.com/css?family=Quicksand')
 
 /*
  * Nib provides a CSS reset
@@ -17,17 +17,87 @@ global-reset()
  * Store the main color and
  * background color as variables
  */
-main-color = #fa5b4d
-background-color = #faf9f0
+main-color = #55ACEE
+background-color = white
+
+centerVertical()
+  position relative
+  top 50%
+  -webkit-transform translateY(-50%)
+  -ms-transform translateY(-50%)
+  transform translateY(-50%)
+  
+preserve3d()
+  -webkit-transform-style preserve-3d
+  -moz-transform-style preserve-3d
+  transform-style preserve-3d
 
 body
-  font-family 'Georgia'
-  background-color background-color
+  position relative
   color #444
+  background-color background-color
+  font-style normal
+  font-family 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'
+  
+#globalheader
+  position absolute
+  top 0
+  left 0
+  width 100%
+  z-index 9999
+  background rgba(0, 0, 0, 0.6)
+  font-size 16px
+  
+  ul
+    display block
+    width 100%
+    height 46px
+    text-align center
+    preserve3d()
+    
+    li
+      display inline-block
+      padding 0 30px
+      centerVertical()
+      
+      a
+        text-decoration none
+        color white
+        
+        &:hover
+          color main-color
 
-header
-  font-family 'Quicksand'
-  padding 50px 10px
+.container
+  width 100%
+  
+.registration
+  display block
+  height 630px
+  preserve3d()
+  
+  text-align center
+  background-color main-color
+  border-bottom 1px solid darken(main-color, 30%)
+
+  .collapsable-button
+    display inline-block
+    centerVertical()
+    
+.collapsable-button
+  width 50%
+  background rgba(0, 0, 0, 0.6)
+  color white
+  
+  border-radius 10px
+  
+  &:hover
+    color main-color
+
+.carousel
+  display block
+  height 630px
+  preserve3d()
+  
   color #fff
   font-size 25px
   text-align center
@@ -39,11 +109,9 @@ header
   background-color main-color
   border-bottom 1px solid darken(main-color, 30%)
   text-shadow 0px -1px 0px darken(main-color, 30%)
-
-.container
-  width 500px
-  margin 50px auto
-  overflow hidden
+  
+  .carousel-item
+    line-height 630px
 
 .main-content
   float left
@@ -79,11 +147,14 @@ header
 
     p
       font-size 13px
-      padding 0px 10px
+      padding 0 10px
       margin-bottom 10px
 
 p
   line-height 1.8
+  
+.hidden
+  display none
 
 footer
   width 500px

@@ -3,13 +3,22 @@ html
   head
     title #{title} - iOT
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/slick/slick.css')
+    link(rel='stylesheet', href='/slick/slick-theme.css')
   body
     header
-      h1 iOT
+      nav(id='globalheader', role='navigation')
+        ul.nav-list
+          li: a(href="/")= "Stanford iOT"
+          li: a(href="/")= "Home"
+          li: a(href="#")= "Team"
+          li: a(href="#")= "Projects"
+          li: a(href="/hackathon")= "Hackathon"
+          li: a(href="#")= "Contact"
     .container
-      .main-content
-        block content
-      .sidebar
-        block sidebar
+      block content
     footer
       p www.iot.derindutz.com
+    
+    script(type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js")
+    block scripts

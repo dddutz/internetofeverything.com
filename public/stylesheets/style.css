@@ -4,7 +4,6 @@
 /*
  * Grab a custom font from Google
  */
-@import url("http://fonts.googleapis.com/css?family=Quicksand");
 /*
  * Nib provides a CSS reset
  */
@@ -104,13 +103,103 @@ a img {
  * background color as variables
  */
 body {
-  font-family: 'Georgia';
-  background-color: #faf9f0;
+  position: relative;
   color: #444;
+  background-color: #fff;
+  font-style: normal;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
-header {
-  font-family: 'Quicksand';
-  padding: 50px 10px;
+#globalheader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: rgba(0,0,0,0.6);
+  font-size: 16px;
+}
+#globalheader ul {
+  display: block;
+  width: 100%;
+  height: 46px;
+  text-align: center;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+#globalheader ul li {
+  display: inline-block;
+  padding: 0 30px;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#globalheader ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+#globalheader ul li a:hover {
+  color: #55acee;
+}
+.container {
+  width: 100%;
+}
+.registration {
+  display: block;
+  height: 630px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  text-align: center;
+  background-color: #55acee;
+  border-bottom: 1px solid #157ece;
+}
+.registration .collapsable-button {
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.collapsable-button {
+  width: 50%;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+.collapsable-button:hover {
+  color: #55acee;
+}
+.carousel {
+  display: block;
+  height: 630px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
   color: #fff;
   font-size: 25px;
   text-align: center;
@@ -118,14 +207,12 @@ header {
    * Note the use of the `main-color`
    * variable and the `darken` function
    */
-  background-color: #fa5b4d;
-  border-bottom: 1px solid #df1806;
-  text-shadow: 0px -1px 0px #df1806;
+  background-color: #55acee;
+  border-bottom: 1px solid #157ece;
+  text-shadow: 0px -1px 0px #157ece;
 }
-.container {
-  width: 500px;
-  margin: 50px auto;
-  overflow: hidden;
+.carousel .carousel-item {
+  line-height: 630px;
 }
 .main-content {
   float: left;
@@ -148,7 +235,7 @@ header {
   border-radius: 3px;
   border: 1px solid #ccc;
   margin-left: 20px;
-  background-color: #faf9f0;
+  background-color: #fff;
   -webkit-box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.8), 0px 3px 0px -2px rgba(0,0,0,0.1);
   box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.8), 0px 3px 0px -2px rgba(0,0,0,0.1);
 }
@@ -163,11 +250,14 @@ header {
 }
 .sidebar .widget p {
   font-size: 13px;
-  padding: 0px 10px;
+  padding: 0 10px;
   margin-bottom: 10px;
 }
 p {
   line-height: 1.8;
+}
+.hidden {
+  display: none;
 }
 footer {
   width: 500px;
