@@ -13,6 +13,11 @@ router.get('/hackathon', function(req, res) {
   res.render('hackathon', { title : 'Hackathon' });
 });
 
+/* GET test page. */
+router.get('/test', function(req, res) {
+    res.render('test', { title: 'test' });
+});
+
 /* GET userlist page. */
 router.get('/userlist', function(req, res) {
     var db = req.db;

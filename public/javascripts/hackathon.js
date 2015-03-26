@@ -1,21 +1,60 @@
+
+// DOM Ready =============================================================
 $(document).ready(function() {
-	$('#register-button').click(function(event) {
-		event.preventDefault();
-		$('#register-form').show();
-	});
+    var source = $("#NewTeamMemberTemplate").html();
+    var template = Handlebars.compile(source);
 
-	var source = $("#new-team-member-template").html();
-	var template = Handlebars.compile(source);
+    $('#register-button').click(function(event) {
+        event.preventDefault();
+        $('#register-form').show();
+    });
 
-	$('#add-team-member').click(function(event) {
-		event.preventDefault();
-		$('#form-team').append(template());
-	});
+    $('#btnAddTeamMember').click(function(event) {
+        event.preventDefault();
+        $('#inputTeamMembers').append(template());
+    });
 
-	var pg = require('pg');
-
-	$('#register-submit').click(function(event) {
-		event.preventDefault();
-		console.log("submit clicked");
-	});
+    $('#btnRegisterUser').on('click', registerUser);
 });
+
+// Functions =============================================================
+
+function registerUser(event) {
+    event.preventDefault();
+
+    var errorCount = 0;
+    $('#registerUser input').each(function(index, val) {
+        if ($(this).val() === '') { errorCount++; }
+    });
+
+    // Check and make sure errorCount's still 0.
+    if (errorCount === 0) {
+        // Compile all user info into one object
+        var newUser = {
+            'email': $('#registerUser fieldset input#inputFirstName').val(),
+            'first_name': $('#registerUser fieldset input#inputLastName').val(),
+            'last_name': $('#registerUser fieldset input#inputEmail').val(),
+            'status': "registered"
+        }
+
+        // Use AJAX to post the object to adduser service
+        $.ajax({
+            type: 'POST',
+            data: newUser,
+            url: '/users/adduser',
+            dataType: 'JSON'
+        }).done(function(res) {
+            // Check for successful (blank) response
+            if (res.msg === '') {
+                // Clear the form inputs
+                $('#registerUser fieldset input').val('');
+            } else {
+                // If something goes wrong, alert the error message that our service returned
+                alert('Error: ' + res.msg);
+            }
+        });
+    } else {
+        alert('Please fill in all fields');
+        return false;
+    }
+}

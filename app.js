@@ -8,11 +8,12 @@ var bodyParser = require('body-parser');
 var stylus = require('stylus');
 var nib = require('nib');
 
-var mongo = require('mongodb');
-var monk = require('monk');
-var db = monk(process.env.MONGOLAB_URI);
+// Database
+var mongo = require('mongoskin');
+var db = mongo.db(process.env.MONGOLAB_URI, {native_parser:true});
 
 var routes = require('./routes/index.js');
+var users = require('./routes/users.js');
 
 var app = express();
 
@@ -46,6 +47,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/', routes);
+app.use('/users', users);
 
 /// Catches 404 and forwards to error handler.
 app.use(function(req, res, next) {

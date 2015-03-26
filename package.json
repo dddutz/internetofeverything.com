@@ -18,9 +18,9 @@
     "jade": "*",
     "stylus": "*",
     "nib": "*",
-    "mongodb": "*",
+    "mongodb": "^1.4.9",
     "mongoose": "^3.8.15",
-    "monk": "*"
+    "mongoskin": "*"
   },
   "engines": {
     "node": "0.10.x"
