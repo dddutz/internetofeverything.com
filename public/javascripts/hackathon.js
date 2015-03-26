@@ -9,10 +9,14 @@ $(document).ready(function() {
         $('#register-form').show();
     });
 
+    var teamMemberId = 0;
     $('#btnAddTeamMember').click(function(event) {
         event.preventDefault();
-        $('#inputTeamMembers').append(template());
+        teamMemberId++;
+        $('#inputTeamMembers').append(template({id: teamMemberId}));
     });
+
+    $('#inputTeamMembers').on('click', '.removeTeamMember', removeTeamMember);
 
     $('#btnRegisterUser').on('click', registerUser);
 });
@@ -57,4 +61,9 @@ function registerUser(event) {
         alert('Please fill in all fields');
         return false;
     }
+}
+
+function removeTeamMember(event) {
+    event.preventDefault();
+    event.target.parentElement.remove();
 }

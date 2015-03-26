@@ -30,8 +30,9 @@ block scripts
   script(type="text/javascript" src="/javascripts/hackathon.js")
     
   script(id="NewTeamMemberTemplate" type="text/x-handlebars-template")
-    input#inputTeamMemberEmail(type='text', placeholder='Team Member Email')
-    button#removeTeamMember remove
+    div(id="teamMember{{id}}")
+      input(id="inputTeamMember{{id}}Email" type='text', placeholder='Team Member Email')
+      button.removeTeamMember(id="btnRemoveTeamMember{{id}}") remove
     //- .entry team member email:
     //-   input(type="text")
     //-   button(id="remove-team-member") remove
