@@ -3,14 +3,16 @@ block content
   .registration
     #register-button.collapsable-button click to register
       form(id="register-form" class="hidden")
-        #form-name.entry name:
+        #form-name.entry first name:
+          input(type="text")
+        #form-name.entry last name:
           input(type="text")
         #form-email.entry email:
           input(type="text")
         #form-team
         button(id="add-team-member") add team member
         #form-submit
-          input(type="submit" value="submit")
+          input(type="submit" value="submit" id="register-submit")
 
 block scripts
   script(type="text/javascript" src="/javascripts/handlebars-v3.0.0.js")

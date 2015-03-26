@@ -153,6 +153,8 @@ body {
 }
 .container {
   width: 100%;
+  position: absolute;
+  top: 200px;
 }
 .registration {
   display: block;

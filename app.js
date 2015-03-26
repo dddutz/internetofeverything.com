@@ -1,8 +1,16 @@
 /* Module dependencies */
 var express = require('express');
 var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var stylus = require('stylus');
 var nib = require('nib');
+
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk(process.env.MONGOLAB_URI);
 
 var routes = require('./routes/index.js');
 
@@ -12,6 +20,7 @@ function compile(str, path) {
 	return stylus(str).set('filename', path).use(nib());
 }
 
+// port setup
 app.set('port', (process.env.PORT || 5000));
 
 // view engine setup
@@ -20,23 +29,35 @@ app.set('view engine', 'jade');
 
 app.use(stylus.middleware( { src: __dirname + '/public', compile: compile }));
 
+// uncomment after placing your favicon in /public
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(cookieParser());
 // Tells express to serve static objects from the /public directory, but make
 // them seem like they're coming from the top level.
 app.use(express.static(__dirname + '/public'));
 
+// Makes db accessible to router.
+app.use(function(req, res, next) {
+    req.db = db;
+    next();
+});
+
 app.use('/', routes);
 
-/// catch 404 and forwarding to error handler
+/// Catches 404 and forwards to error handler.
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-/// error handlers
+/// Error Handlers
 
-// development error handler
-// will print stacktrace
+// Development error handler
+// Prints stacktrace.
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
@@ -47,8 +68,8 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
+// Production error handler
+// Prevents stacktraces from being leaked to user.
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -62,11 +83,3 @@ app.listen(app.get('port'), function() {
 });
 
 module.exports = app;
-
-// app.get('/', function(request, response) {
-//   response.render('index', { title : 'Home' });
-// });
-
-// app.get('/hackathon', function(request, response) {
-//   response.render('hackathon', { title : 'Hackathon' });
-// });
