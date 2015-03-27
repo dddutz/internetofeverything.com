@@ -1,7 +1,8 @@
+
 extend layout
 block content
   .registration
-    #register-button.collapsable-button click to register team
+    #register-button.collapsable-button register
 
       // REGISTER USER
       #registerUser
@@ -9,8 +10,6 @@ block content
           input#inputFirstName(type='text', placeholder='First Name')
           input#inputLastName(type='text', placeholder='Last Name')
           input#inputEmail(type='text', placeholder='Email')
-          #inputTeamMembers
-          button#btnAddTeamMember Add Team Member
           button#btnRegisterUser Register
       // /REGISTER USER
       //- form(id="register-form" class="hidden")
@@ -25,13 +24,35 @@ block content
       //-   #form-submit
       //-     input(type="submit" value="submit" id="register-submit")
 
+    #createTeamSection.collapsable-button create team
+
+      // CREATE TEAM
+      #createTeam
+        fieldset
+          input#inputCreateTeamName(type='text', placeholder='Team Name')
+          input#inputCreateTeamEmail(type='text', placeholder='Your Email')
+          #inputTeamMembers
+          button#btnAddTeamMember Invite Team Member
+          button#btnCreateTeam Create Team
+      // /CREATE TEAM
+
+    #joinTeamSection.collapsable-button join team
+      // JOIN TEAM
+      #joinTeam
+        fieldset
+          input#inputJoinTeamName(type='text', placeholder='Joining Team Name')
+          input#inputJoinTeamEmail(type='text', placeholder='Your Email')
+          button#btnJoinTeam Join Team
+      // /JOIN TEAM
+
+
 block scripts
   script(type="text/javascript" src="/javascripts/handlebars-v3.0.0.js")
   script(type="text/javascript" src="/javascripts/hackathon.js")
     
   script(id="NewTeamMemberTemplate" type="text/x-handlebars-template")
     div(id="teamMember{{id}}")
-      input(id="inputTeamMember{{id}}Email" type='text', placeholder='Team Member Email')
+      input(id="inputTeamMember{{id}}Email" type='text', placeholder='Email to Invite')
       button.removeTeamMember(id="btnRemoveTeamMember{{id}}") remove
     //- .entry team member email:
     //-   input(type="text")

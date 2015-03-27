@@ -14,6 +14,7 @@ var db = mongo.db(process.env.MONGOLAB_URI, {native_parser:true});
 
 var routes = require('./routes/index.js');
 var users = require('./routes/users.js');
+var teams = require('./routes/teams.js');
 
 var app = express();
 
@@ -48,6 +49,7 @@ app.use(function(req, res, next) {
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/teams', teams);
 
 /// Catches 404 and forwards to error handler.
 app.use(function(req, res, next) {
